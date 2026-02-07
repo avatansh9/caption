@@ -62,8 +62,7 @@ export default function Home() {
     return 3;
   }, [file, tone]);
 
-  const apiBase =
-    process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+  const apiBase = "https://huggingface.co/spaces/avatansh/caption-api";
 
   const handleFile = (selected) => {
     if (!selected) return;
@@ -203,9 +202,7 @@ export default function Home() {
       borderRadius: 999,
       fontWeight: 600,
       fontSize: "0.85rem",
-      background: active
-        ? "rgba(102,126,234,0.2)"
-        : "rgba(255,255,255,0.6)",
+      background: active ? "rgba(102,126,234,0.2)" : "rgba(255,255,255,0.6)",
       border: "1px solid rgba(255,255,255,0.7)",
       color: active ? "#3c2a70" : "#5a5475",
       boxShadow: active ? "0 8px 20px rgba(99,102,241,0.25)" : "none",
@@ -249,9 +246,7 @@ export default function Home() {
       border: active
         ? "1px solid rgba(118,75,162,0.9)"
         : "1px solid rgba(120,120,140,0.2)",
-      background: active
-        ? "rgba(118,75,162,0.12)"
-        : "rgba(255,255,255,0.85)",
+      background: active ? "rgba(118,75,162,0.12)" : "rgba(255,255,255,0.85)",
       boxShadow: active
         ? "0 18px 30px rgba(118,75,162,0.25)"
         : "0 10px 20px rgba(40, 20, 80, 0.08)",
@@ -356,15 +351,60 @@ export default function Home() {
     <div style={styles.page}>
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap");
-        * { box-sizing: border-box; }
-        button:hover { transform: translateY(-2px); }
-        button:active { transform: translateY(0); }
-        .lift:hover { transform: translateY(-6px); }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
+        * {
+          box-sizing: border-box;
+        }
+        button:hover {
+          transform: translateY(-2px);
+        }
+        button:active {
+          transform: translateY(0);
+        }
+        .lift:hover {
+          transform: translateY(-6px);
+        }
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes shimmer {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.04);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
       `}</style>
 
       <div style={styles.shell}>
@@ -389,15 +429,13 @@ export default function Home() {
 
         <section style={styles.card}>
           <div style={styles.stepper}>
-            {[
-              "Upload Image",
-              "Select Tone",
-              "View Captions",
-            ].map((label, index) => (
-              <span key={label} style={styles.stepBadge(step === index + 1)}>
-                {index + 1}. {label}
-              </span>
-            ))}
+            {["Upload Image", "Select Tone", "View Captions"].map(
+              (label, index) => (
+                <span key={label} style={styles.stepBadge(step === index + 1)}>
+                  {index + 1}. {label}
+                </span>
+              ),
+            )}
           </div>
 
           <div style={{ display: "grid", gap: 24 }}>
@@ -569,4 +607,3 @@ export default function Home() {
     </div>
   );
 }
-
